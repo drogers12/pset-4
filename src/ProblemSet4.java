@@ -52,23 +52,23 @@ public class ProblemSet4 {
      */
 
     public void sum() {
-      long sum = 0;
-       long lowerBound;
-       long upperBound;
+      int sum = 0;
+       int lowerBound;
+       int upperBound;
 
        do
        {
            System.out.print("\nLower bound: ");
-           lowerBound = in.nextLong();
+           lowerBound = in.nextint();
            System.out.print("Upper bound: ");
-           upperBound = in.nextLong();
+           upperBound = in.nextint();
        } while (lowerBound > upperBound);
 
        if ((lowerBound % 2) != 0) {
            lowerBound = lowerBound+1;
        }
 
-       for (long i = lowerBound; i <= upperBound; i = i + 2) {
+       for (int i = lowerBound; i <= upperBound; i = i + 2) {
            sum += i;
        }
 
@@ -84,20 +84,20 @@ public class ProblemSet4 {
 
     public void reverse() {
 
-      long userInteger = 0;
+      int userInteger = 0;
       do
       {
           System.out.print("\nPositive integer: ");
-          userInteger = in.nextLong();
+          userInteger = in.nextint();
       } while (userInteger < 1);
 
 
 
 //Set this whole thing up but in a for loop where it goes for the whole number
-      long ones = userInteger%10;
-      long tens = (userInteger/10)%10;
-      long hundreds = (userInteger/100)%10;
-      long thousands = (userInteger/1000)%10;
+      int ones = userInteger%10;
+      int tens = (userInteger/10)%10;
+      int hundreds = (userInteger/100)%10;
+      int thousands = (userInteger/1000)%10;
       System.out.print(ones);
       System.out.print(tens);
       System.out.print(hundreds);
