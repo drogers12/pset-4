@@ -27,9 +27,9 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        ps.sum();
-        ps.reverse();
-        ps.digits();
+        //ps.sum();
+        //ps.reverse();
+        //ps.digits();
         ps.average();
         ps.prime();
         ps.fibonacci();
@@ -59,20 +59,18 @@ public class ProblemSet4 {
        do
        {
            System.out.print("\nLower bound: ");
-           lowerBound = in.nextint();
+           lowerBound = in.nextInt();
            System.out.print("Upper bound: ");
-           upperBound = in.nextint();
+           upperBound = in.nextInt();
        } while (lowerBound > upperBound);
 
        if ((lowerBound % 2) != 0) {
            lowerBound = lowerBound+1;
        }
-
        for (int i = lowerBound; i <= upperBound; i = i + 2) {
            sum += i;
        }
-
-       System.out.printf("\n%d.\n", sum);
+       System.out.printf("\n%d.\n\n", sum);
     }
 
     /*
@@ -87,22 +85,26 @@ public class ProblemSet4 {
       int userInteger = 0;
       do
       {
-          System.out.print("\nPositive integer: ");
-          userInteger = in.nextint();
+          System.out.print("Positive integer: ");
+          userInteger = in.nextInt();
       } while (userInteger < 1);
 
 
 
 //Set this whole thing up but in a for loop where it goes for the whole number
-      int ones = userInteger%10;
-      int tens = (userInteger/10)%10;
-      int hundreds = (userInteger/100)%10;
-      int thousands = (userInteger/1000)%10;
-      System.out.print(ones);
-      System.out.print(tens);
-      System.out.print(hundreds);
-      System.out.print(thousands);
+      int divisionFactor = 1;
+      int singleDigit = 0;
 
+      while (divisionFactor<=userInteger){
+        singleDigit = (userInteger/divisionFactor)%10;
+        System.out.print(singleDigit);
+        divisionFactor *= 10;
+        if (divisionFactor <= userInteger){
+          System.out.print(", ");
+        }else{
+          System.out.print(".");
+        }
+      }
     }
 
     /*
@@ -113,7 +115,27 @@ public class ProblemSet4 {
      */
 
     public void digits() {
+      int numberSum = 0;
+      int userInteger = 0;
+      int divisionFactor = 1;
+      int singleDigit = 0;
 
+      do
+      {
+          System.out.print("Positive integer: ");
+          userInteger = in.nextInt();
+      } while (userInteger < 1);
+
+      while (divisionFactor<=userInteger){
+        singleDigit = (userInteger/divisionFactor)%10;
+        if (singleDigit%2 == 1){
+          numberSum = numberSum + singleDigit;
+        }
+        divisionFactor *= 10;
+        if (divisionFactor>userInteger){
+          System.out.println("\n" + numberSum);
+        }
+      }
     }
 
     /*
@@ -125,7 +147,15 @@ public class ProblemSet4 {
      */
 
     public void average() {
-
+      int userInteger = 0;
+      int average = 0;
+      int loopCounter = 0;
+      do
+      {
+          System.out.print("Non-negative integer: ");
+          userInteger = in.nextInt();
+          average =
+      } while (userInteger >= 0);
     }
 
     /*
