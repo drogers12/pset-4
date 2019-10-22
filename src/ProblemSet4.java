@@ -30,10 +30,10 @@ public class ProblemSet4 {
         //ps.sum();
         //ps.reverse();
         //ps.digits();
-        ps.average();
-        ps.prime();
-        ps.fibonacci();
-        ps.factors();
+        //ps.average();
+        //ps.prime();
+        //ps.fibonacci();
+        //ps.factors();
         ps.mario();
         ps.luigi();
         ps.credit();
@@ -175,7 +175,7 @@ public class ProblemSet4 {
         do
         {
            System.out.print("Non-negative integer: ");
-           integer = in.nextLong();
+           integer = in.nextInt();
         } while (integer < 0);
 
         if (integer == 1) {
@@ -206,6 +206,23 @@ public class ProblemSet4 {
 
     public void fibonacci() {
 
+      int integer;
+      int previousInt = 0;
+      int currentInt = 1;
+      int nextInt = 1;
+
+      do
+      {
+          System.out.print("Positive integer: ");
+          integer = in.nextInt();
+      } while (integer < 1 || integer > 92);
+
+      for (int i = 1; i < integer; i++) {
+          nextInt = previousInt + currentInt;
+          previousInt = currentInt;
+          currentInt = nextInt;
+      }
+      System.out.printf("\n%d.\n\n", nextInt);
     }
 
     /*
@@ -215,6 +232,28 @@ public class ProblemSet4 {
      */
 
     public void factors() {
+
+      int integer;
+      int previousInt;
+
+      do
+      {
+          System.out.print("Positive integer: ");
+          integer = in.nextInt();
+
+      } while (integer < 1);
+
+      System.out.printf("\n1, %d", integer);
+
+      for (int i = 2; i <= integer/i; i++) {
+
+          if (integer % i == 0) {
+              System.out.printf(", %d, %d", i, integer/i);
+          }
+
+      }
+
+      System.out.print(".\n\n");
 
     }
 
@@ -226,6 +265,23 @@ public class ProblemSet4 {
      */
 
     public void mario() {
+
+      int height;
+      String blanks;
+      String blocks;
+
+      do
+      {
+          System.out.print("Height: ");
+          height = in.nextInt();
+      } while (height < 1 || height > 24);
+
+      while (height > 0){
+        blanks = String.format("%1$"+height+"s", "");
+        blocks = String.format("%1$"+height+ "#");
+        System.out.println(blanks+blocks);
+        height--;
+      }
 
     }
 
