@@ -148,14 +148,19 @@ public class ProblemSet4 {
 
     public void average() {
       int userInteger = 0;
-      int average = 0;
-      int loopCounter = 0;
+      int total = 0;
+      int count = 0;
       do
       {
           System.out.print("Non-negative integer: ");
           userInteger = in.nextInt();
-          average =
+          if (userInteger >= 0){
+            total += userInteger;
+            count++;
+          }
       } while (userInteger >= 0);
+      double average = total/count;
+      System.out.printf("\n%,.2f.\n\n", average);
     }
 
     /*
@@ -165,7 +170,31 @@ public class ProblemSet4 {
      */
 
     public void prime() {
+        boolean isPrime = true;
+        int integer;
+        do
+        {
+           System.out.print("Non-negative integer: ");
+           integer = in.nextLong();
+        } while (integer < 0);
 
+        if (integer == 1) {
+           isPrime = true;
+        } else if (integer == 0) {
+           isPrime = false;
+        }
+
+        for (int i = 2; i < integer; i++) {
+           if (integer % i == 0 && integer != i) {
+               isPrime = false;
+           }
+        }
+
+        if (isPrime) {
+           System.out.println("\nPrime.\n");
+        } else {
+           System.out.println("\nNot prime.\n");
+        }
     }
 
     /*
