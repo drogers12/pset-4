@@ -266,9 +266,10 @@ public class ProblemSet4 {
 
     public void mario() {
 
+
+      int spaces;
+      int dashes;
       int height;
-      String blanks;
-      String blocks;
 
       do
       {
@@ -276,13 +277,15 @@ public class ProblemSet4 {
           height = in.nextInt();
       } while (height < 1 || height > 24);
 
-      while (height > 0){
-        blanks = String.format("%1$"+height+"s", "");
-        blocks = String.format("%1$"+height+ "#");
-        System.out.println(blanks+blocks);
-        height--;
+      for (int i = 1; i <= height; i++){
+        for (spaces = (height - i); spaces >= 0; spaces--){
+            System.out.printf(" ");
+        }
+        for (dashes = 1; dashes <= (i + 1); dashes++){
+            System.out.printf("#");
+        }
+        System.out.println("");
       }
-
     }
 
     /*
@@ -293,6 +296,8 @@ public class ProblemSet4 {
      */
 
     public void luigi() {
+
+
 
     }
 
