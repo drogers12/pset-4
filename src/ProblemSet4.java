@@ -27,13 +27,13 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        //ps.sum();
-        //ps.reverse();
-        //ps.digits();
-        //ps.average();
-        //ps.prime();
-        //ps.fibonacci();
-        //ps.factors();
+        ps.sum();
+        ps.reverse();
+        ps.digits();
+        ps.average();
+        ps.prime();
+        ps.fibonacci();
+        ps.factors();
         ps.mario();
         ps.luigi();
         ps.credit();
@@ -52,13 +52,15 @@ public class ProblemSet4 {
      */
 
     public void sum() {
-      int sum = 0;
+       int sum = 0;
        int lowerBound;
        int upperBound;
 
+       System.out.println("");
+
        do
        {
-           System.out.print("\nLower bound: ");
+           System.out.print("Lower bound: ");
            lowerBound = in.nextInt();
            System.out.print("Upper bound: ");
            upperBound = in.nextInt();
@@ -89,9 +91,8 @@ public class ProblemSet4 {
           userInteger = in.nextInt();
       } while (userInteger < 1);
 
+      System.out.printf("\n");
 
-
-//Set this whole thing up but in a for loop where it goes for the whole number
       int divisionFactor = 1;
       int singleDigit = 0;
 
@@ -102,7 +103,7 @@ public class ProblemSet4 {
         if (divisionFactor <= userInteger){
           System.out.print(", ");
         }else{
-          System.out.print(".");
+          System.out.print(".\n");
         }
       }
     }
@@ -120,6 +121,8 @@ public class ProblemSet4 {
       int divisionFactor = 1;
       int singleDigit = 0;
 
+      System.out.printf("\n");
+
       do
       {
           System.out.print("Positive integer: ");
@@ -133,7 +136,7 @@ public class ProblemSet4 {
         }
         divisionFactor *= 10;
         if (divisionFactor>userInteger){
-          System.out.println("\n" + numberSum);
+          System.out.println("\n" + numberSum + ".");
         }
       }
     }
@@ -147,13 +150,16 @@ public class ProblemSet4 {
      */
 
     public void average() {
-      int userInteger = 0;
-      int total = 0;
-      int count = 0;
+      double userInteger = 0;
+      double total = 0;
+      double count = 0;
+
+      System.out.printf("\n");
+
       do
       {
           System.out.print("Non-negative integer: ");
-          userInteger = in.nextInt();
+          userInteger = in.nextDouble();
           if (userInteger >= 0){
             total += userInteger;
             count++;
@@ -277,6 +283,8 @@ public class ProblemSet4 {
           height = in.nextInt();
       } while (height < 1 || height > 24);
 
+      System.out.println("");
+
       for (int i = 1; i <= height; i++){
         for (spaces = (height - i); spaces >= 0; spaces--){
             System.out.printf(" ");
@@ -297,8 +305,36 @@ public class ProblemSet4 {
 
     public void luigi() {
 
+      int spaces;
+      int dashes;
+      int height;
 
+      System.out.printf("\n");
 
+      do
+      {
+          System.out.print("Height: ");
+          height = in.nextInt();
+      } while (height < 1 || height > 24);
+
+      System.out.printf("\n");
+
+      for (int i = 1; i <= height; i++){
+        for (spaces = (height - i); spaces >= 0; spaces--){
+            System.out.printf(" ");
+        }
+        for (dashes = 1; dashes <= (i + 1); dashes++){
+            System.out.printf("#");
+        }
+
+        System.out.print("  ");
+
+        for (int k = 1; k < dashes; k++){
+          System.out.print("#");
+        }
+        System.out.println("");
+      }
+      System.out.println("");
     }
 
     /*
@@ -310,5 +346,50 @@ public class ProblemSet4 {
 
     public void credit() {
 
+      long number;
+      long temp = 0;
+      long oddSum = 0;
+      long totalSum = 0;
+      String totalSumString;
+
+
+
+        do
+        {
+            System.out.print("Number: ");
+            number = in.nextLong();
+        } while (number <= 0);
+
+        String numberString = Long.toString(number);
+
+        for (int i = numberString.length()-2; i >= 0; i -= 2) {
+            temp = Integer.parseInt(numberString.substring(i,i+1))*2;
+            for (int j = 0; j < String.valueOf(temp).length(); j++) {
+                oddSum += Integer.parseInt(String.valueOf(temp).substring(j, j+1));
+            }
+        }
+
+        for (int i = numberString.length()-1; i >= 0; i -= 2) {
+            totalSum += Integer.parseInt(numberString.substring(i,i+1));
+        }
+
+        totalSum += oddSum;
+        totalSumString = String.valueOf(totalSum);
+
+        if (totalSum % 10 == 0) {
+            if (numberString.length() == 15 && (numberString.substring(0,2).equals("34") || numberString.substring(0,2).equals("37"))) {
+                System.out.println("\nAmex.\n");
+            } else if (numberString.length() == 16 && (numberString.substring(0,2).equals("51")
+              || numberString.substring(0,2).equals("52") || numberString.substring(0,2).equals("53")
+              || numberString.substring(0,2).equals("54") || numberString.substring(0,2).equals("55"))) {
+                System.out.println("\nMastercard.\n");
+            } else if ((numberString.length() == 16 || numberString.length() == 13) && numberString.substring(0,1).equals("4")) {
+                System.out.println("\nVisa.\n");
+            } else {
+                System.out.println("\nInvalid.\n");
+            }
+        } else {
+            System.out.println("\nInvalid.\n");
+        }
     }
 }
